@@ -9,6 +9,10 @@
       href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
       rel="stylesheet"
     />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="reset.css" />
     <link rel="stylesheet" href="style.css" />
     <title>Document</title>
@@ -28,22 +32,58 @@
             <input type="text" name="password" id="password" />
           </div>
           <div class="actions">
-            <button class="copy2">C</button>
-            <button id="renew">RS</button>
+            <button id="copy-1">
+              <img src="./images/copy.svg" width="42" />
+            </button>
+            <button id="renew">
+              <img src="./images/renew.svg" width="42" />
+            </button>
+          </div>
+        </div>
+        <div class="security-indicator">
+          <div
+            id="security-indecator-bar"
+            class="bar safe"
+            style="width: 90%"
+          ></div>
+        </div>
+      </section>
+
+      <section class="box customize">
+        <h3 class="title">Personalizar</h3>
+        <div class="actions">
+          <div class="password-lenght">
+            <p>Tamanho: <span id="password-lenght-text">16</span></p>
+            <input
+              type="range"
+              name="password-lenght"
+              id="password-lenght"
+              value="16"
+              min="4"
+              max="64"
+            />
+          </div>
+          <div class="config">
+            <label class="checkbox-container">
+              <span class="text">Maiúsculas</span>
+              <input type="checkbox" id="uppercase-check" checked />
+              <span class="checkmark"></span>
+            </label>
+            <label class="checkbox-container">
+              <span class="text">Minúsculas</span>
+              <input type="checkbox" id="uppercase-check" checked />
+              <span class="checkmark"></span>
+            </label>
+            <label class="checkbox-container">
+              <span class="text">Maiúsculas</span>
+              <input type="checkbox" id="uppercase-check" checked />
+              <span class="checkmark"></span>
+            </label>
           </div>
         </div>
       </section>
 
-      <input
-        type="range"
-        name="password-lenght"
-        id="password-lenght"
-        value="16"
-        min="4"
-        max="64"
-      />
-
-      <button id="copy">Copiar senha</button>
+      <button id="copy-2">Copiar senha</button>
     </main>
 
     <script>
@@ -75,8 +115,8 @@
         generatePassword();
       });
 
-      const copyButtonEl = document.querySelector("#copy");
-      copyButtonEl.addEventListener("click", copy);
+      document.querySelector("#copy-1").addEventListener("click", copy);
+      document.querySelector("#copy-2").addEventListener("click", copy);
 
       generatePassword();
     </script>
