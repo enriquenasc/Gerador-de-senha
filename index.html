@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -19,6 +19,41 @@
       max="64"
     />
 
-    <button>Copiar senha</button>
+    <button id="copy">Copiar senha</button>
+
+    <script>
+      const inputEl = document.querySelector("#password");
+
+      let passwordLenght = 16;
+
+      function generatePassword() {
+        const chars =
+          "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ123456789!@#$%¨&*()=+{}[]~^\/?<>";
+        let password = "";
+
+        for (let i = 0; i < passwordLenght; i++) {
+          const randomNumber = Math.floor(Math.random() * chars.length);
+          password += chars.substring(randomNumber, randomNumber + 1);
+        }
+
+        inputEl.value = password;
+      }
+
+      function copy() {
+        navigator.clipboard.writeText(inputEl.value);
+      }
+
+      const passwordLenghtEl = document.querySelector("#password-lenght");
+      passwordLenghtEl.addEventListener("input", function () {
+        passwordLenght = passwordLenghtEl.value;
+
+        generatePassword();
+      });
+
+      const copyButtonEl = document.querySelector("#copy");
+      copyButtonEl.addEventListener("click", copy);
+
+      generatePassword();
+    </script>
   </body>
 </html>
